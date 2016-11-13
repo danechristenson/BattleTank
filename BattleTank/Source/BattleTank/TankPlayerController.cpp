@@ -4,6 +4,8 @@
 #include "TankPlayerController.h"
 
 
+
+
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -19,6 +21,22 @@ void ATankPlayerController::BeginPlay()
 	}
 	UE_LOG(LogTemp, Warning, TEXT("PlayerController Begin Play"));
 }
+
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	AimTowardCrossHair();
+}
+
+void ATankPlayerController::AimTowardCrossHair()
+{
+	if (!GetControlledTank()) { return; }
+	
+	
+	return;
+}
+
 
 ATank* ATankPlayerController::GetControlledTank() const
 {
