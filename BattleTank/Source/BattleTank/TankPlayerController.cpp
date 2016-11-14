@@ -36,7 +36,7 @@ void ATankPlayerController::AimTowardCrossHair()
 	FVector HitLocation; //Out parameter
 	if(GetSightRayHitLocation(HitLocation)) // is going to linetrace
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *HitLocation.ToString());
+		GetControlledTank()->AimAt(HitLocation);
 	}
 	return;
 }
