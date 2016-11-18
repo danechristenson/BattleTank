@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "BattleTank.h"
+#include "Tank.h"
 #include "TankPlayerController.h"
 
 
@@ -19,7 +20,7 @@ void ATankPlayerController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerController possessing: %s"), *ControlledTank->GetName());
 	}
-	UE_LOG(LogTemp, Warning, TEXT("PlayerController Begin Play"));
+	
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
@@ -47,7 +48,7 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
 	// Find the crosshair position in pixel coordinates
 	int32 ViewportSizeX, ViewportSizeY;
 	GetViewportSize(ViewportSizeX, ViewportSizeY);
-	FVector2D ScreenLocation = FVector2D(ViewportSizeX * CrossHairXLocation, ViewportSizeY * CrossHairYLocation);
+	auto ScreenLocation = FVector2D(ViewportSizeX * CrossHairXLocation, ViewportSizeY * CrossHairYLocation);
 	
 	//"De-Project" the screen position of the crosshair to the world direction
 	FVector LookDirection;
@@ -63,7 +64,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 {
 	FHitResult HitResult;
 	auto StartLocation = PlayerCameraManager->GetCameraLocation();
-	auto EndLocation = (StartLocation + LookDirection * LineTraceRange);
+	auto EndLocation = StartLocation + (LookDirection * LineTraceRange);
 	if(GetWorld()->LineTraceSingleByChannel(
 		HitResult,
 		StartLocation,
@@ -71,7 +72,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVec
 		ECollisionChannel::ECC_Visibility)
 	)
 	{
-		HitLocation = HitResult.Location;//set hit location
+		HitLocation = HitResult.Location;
 		return true;
 	} 
 	HitLocation = FVector(0);
