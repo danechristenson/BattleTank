@@ -4,6 +4,10 @@
 #include "TankAimingComponent.h"
 #include "Tank.h"
 
+void ATank::SetTurretReference(UTankTurret * TurretToSet)
+{
+	TankAimingComponent->SetTurretReference(TurretToSet);
+}
 
 void ATank::SetBarrelReference(UTankBarrel * BarrelToSet)
 {
