@@ -14,10 +14,11 @@ class BATTLETANK_API UTankTurret : public UStaticMeshComponent
 	GENERATED_BODY()
 	
 public:
+	// -1 is max left speed, +1 max right
 	void Rotate(float RelativeSpeed);
 
 private:
 	UPROPERTY(EditAnywhere, Category = Setup)
-	float MaxDegreesPerSecond = 15;
+	float MaxDegreesPerSecond = 20;
 	
 };
