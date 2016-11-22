@@ -45,13 +45,30 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace //FIXME comment to produce bug
 	);
+	DebugLine(HitLocation);
 
 	if (bHaveAimSolution)
 	{
-		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
+		auto AimDirection = OutLaunchVelocity.GetSafeNormal(); //FIXME I think the issue is here with aiming
 		MoveBarrelTowards(AimDirection);
 	}
+		
+}
+
+void UTankAimingComponent::DebugLine(FVector HitLocation)
+{
 	
+	// Draw a red trace in the world to visualise
+	DrawDebugLine(
+		GetWorld(),
+		Barrel->GetSocketLocation(FName("Projectile")),
+		HitLocation,
+		FColor(255, 0, 0),
+		false,
+		0.f,
+		0.f,
+		10.f
+	);
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)

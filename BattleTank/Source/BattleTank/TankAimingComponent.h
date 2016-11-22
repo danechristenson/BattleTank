@@ -24,6 +24,8 @@ public:
 
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
+	void DebugLine(FVector HitLocation);
+
 	
 		
 private:
