@@ -58,7 +58,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 void UTankAimingComponent::DebugLine(FVector HitLocation)
 {
 	
-	// Draw a red trace in the world to visualise
+	// Draw a red trace in the world to visualize
 	DrawDebugLine(
 		GetWorld(),
 		Barrel->GetSocketLocation(FName("Projectile")),

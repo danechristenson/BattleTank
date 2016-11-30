@@ -53,8 +53,6 @@ void ATank::Fire()
 {
 	bool bIsReloaded = ((FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds);
 
-	UE_LOG(LogTemp, Warning, TEXT("Firing"));
-
 	if (Barrel && bIsReloaded)
 	{
 
