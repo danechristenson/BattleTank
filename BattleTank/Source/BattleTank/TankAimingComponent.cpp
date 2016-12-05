@@ -46,6 +46,8 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		ESuggestProjVelocityTraceOption::DoNotTrace //FIXME comment to produce bug
 	);
 	DebugLine(HitLocation);
+	//add debug line 
+	//UE_LOG(LogTemp, Warning, TEXT("Aiming at: %s"), HitLocation.ToString());
 
 	if (bHaveAimSolution)
 	{

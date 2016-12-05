@@ -39,7 +39,6 @@ void ATankPlayerController::AimTowardCrossHair()
 	{
 		GetControlledTank()->AimAt(HitLocation);
 	}
-	return;
 }
 
 /// Get World location of linetrace through crosshair, true if hits landscape
